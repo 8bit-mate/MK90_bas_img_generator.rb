@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "generator_hex_mask_general"
-require_relative "script"
+require_relative "./../../script"
 
 #
 # BASIC script generation using DRAW/M feature without 'enhancements'.

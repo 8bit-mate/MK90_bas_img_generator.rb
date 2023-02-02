@@ -3,7 +3,7 @@
 require_relative "BASIC_command_sets/basic_v10_command_set"
 
 #
-# Constants used by the generators.
+# Global constants used by the generators.
 #
 module Constants
   BLACK_PX_CLR = 1

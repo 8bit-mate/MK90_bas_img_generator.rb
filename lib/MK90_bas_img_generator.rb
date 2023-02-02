@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "MK90_bas_img_generator/generator_hex_mask_default"
+require_relative "MK90_bas_img_generator/generators/hex_mask/generator_hex_mask_default"
+require_relative "MK90_bas_img_generator/generators/hex_mask/generator_hex_mask_enhanced"
+
 require_relative "MK90_bas_img_generator/constants"
 require_relative "MK90_bas_img_generator/version"
 
