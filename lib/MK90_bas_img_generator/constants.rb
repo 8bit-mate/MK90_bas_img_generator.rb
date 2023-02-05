@@ -9,7 +9,5 @@ module Constants
   BLACK_PX_CLR = 1
   WHITE_PX_CLR = 0
 
-  SINGLE_DOT_SIZE = 1
-
   BASIC_10 = Basic10CommandSet
 end

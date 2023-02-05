@@ -7,7 +7,7 @@ require_relative "MK90_bas_img_generator/constants"
 require_relative "MK90_bas_img_generator/version"
 
 #
-# Convert a binary image to a list of unformatted MK90 BASIC statements (operator's keywords and arguments).
+# Converts a binary image to a list of unformatted MK90 BASIC statements (operator's keywords and arguments).
 #
 class MK90BasImgGenerator
   attr_reader :generator, :binary_image, :target_lang, :origin, :scan_direction
