@@ -28,7 +28,7 @@ class GenHexMaskEnhanced
   #
   # BASIC script generation using DRAW/M feature with 'enhancements'.
   #
-  # @param [BinaryImage] binary_image
+  # @param [BinMagick] binary_image
   #
   # @param [Symbol] target_lang
   #
