@@ -31,6 +31,7 @@ Gem::Specification.new do |spec|
 
   # Uncomment to register a new dependency of your gem
   spec.add_dependency "run_length_encoding_rb", "~> 0.2.1"
+  spec.add_dependency "bin_magick", "~> 0.1.2"
 
   # For more information and examples about making a new gem, checkout our
   # guide at: https://bundler.io/guides/creating_gem.html

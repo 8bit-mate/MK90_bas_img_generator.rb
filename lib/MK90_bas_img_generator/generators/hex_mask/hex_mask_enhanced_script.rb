@@ -7,6 +7,8 @@ class HexMaskEnhancedScript < Script
   MIN_REP_CHUNKS = 16
   MIN_REP_WH_CHUNKS = 10
 
+  CHUNK_WIDTH = 8
+
   #
   # @param [HexImg] hex_img
   #   A binary image represented in a form of 8x1 hex-encoded chunks.
@@ -68,7 +70,7 @@ class HexMaskEnhancedScript < Script
     # reached the vertical end of the image - re-calculate position:
     div_res = @y.div(@hex_img.height)
     rem = @y.remainder(@hex_img.height)
-    @x += 8 * div_res
+    @x += CHUNK_WIDTH * div_res
     @y = rem
   end
 
