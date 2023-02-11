@@ -103,10 +103,7 @@ class HexMaskEnhancedScript < Script
     _add_prepending_chunks
     _clr_prepending_chunks
 
-    coordinates = {
-      x: @x,
-      y: @y
-    }
+    coordinates = [@x, @y]
     append_draw_o(args: coordinates)
 
     _upd_rle_index
