@@ -1,4 +1,4 @@
-### 0.1.1 / 2023-02-13
+### 0.1.2 / 2023-02-13
 
 * Added 'run_length_encoding_rb' dependency to the Gemfile.
 
