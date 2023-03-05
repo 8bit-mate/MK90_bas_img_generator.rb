@@ -18,6 +18,11 @@ class GenHexMaskDefault
 
     script = Script.new(target_lang: target_lang)
 
+    prepend_opt = { "append_cls" => { args: "ololo" } }
+
+    script.prepend_options(prepend_opt)
+
+
     script.append_draw_m(args: hex_img)
 
     script

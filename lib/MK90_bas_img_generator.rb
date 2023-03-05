@@ -14,18 +14,24 @@ class MK90BasImgGenerator
 
   include Constants
 
+  BASIC_10 = Basic10CommandSet
+
   def initialize(
     generator:,
     binary_image:,
     target_lang: BASIC_10,
     origin: { x: 0, y: 0 },
-    scan_direction: "placeholder"
+    scan_direction: "placeholder",
+    prepend_opt: {},
+    append_opt: {}
   )
     @generator = generator
     @binary_image = binary_image
     @target_lang = target_lang
     @origin = origin
     @scan_direction = scan_direction
+    @prepend_opt = prepend_opt
+    @append_opt = append_opt
   end
 
   #

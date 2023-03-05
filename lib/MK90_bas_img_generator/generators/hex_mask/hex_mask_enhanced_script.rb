@@ -95,10 +95,10 @@ class HexMaskEnhancedScript < Script
   end
 
   # Replace long sequences of white chunks (0x00) with a shorter manual shift of the (X, Y) pointer.
-  def _process_white_segments(i)
+  def _process_white_segments(idx)
     # if white segments are the last part of the image,
     # we don't need to store them in the BASIC script at all
-    return if i == @rle_hex_img.length - 1
+    return if idx == @rle_hex_img.length - 1
 
     _add_prepending_chunks
     _clr_prepending_chunks

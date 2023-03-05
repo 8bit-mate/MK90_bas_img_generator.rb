@@ -13,4 +13,12 @@ class Script
 
     @script = []
   end
+
+  def prepend_options(prepend_options)
+    return unless prepend_options
+
+    prepend_options.each do |method, args|
+      send(method, **args)
+    end
+  end
 end
