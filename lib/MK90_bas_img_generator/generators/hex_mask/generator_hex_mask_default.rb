@@ -3,28 +3,21 @@
 require_relative "generator_hex_mask_general"
 require_relative "./../../script"
 
+require "delegate"
+
 #
 # BASIC script generation using DRAW/M feature without 'enhancements'.
 #
 # @param [BinMagick] binary_image
 #
-# @param [Symbol] target_lang
-#
 # @return [Script] script
 #
-class GenHexMaskDefault
-  def generate(binary_image:, target_lang:, **)
+class GenHexMaskDefault < SimpleDelegator
+  def generate(binary_image:, **)
     hex_img = HexMaskGenerator.generate_hex_mask(binary_image)
 
-    script = Script.new(target_lang: target_lang)
+    append_draw_m(args: hex_img)
 
-    prepend_opt = { "append_cls" => { args: "ololo" } }
-
-    script.prepend_options(prepend_opt)
-
-
-    script.append_draw_m(args: hex_img)
-
-    script
+    self
   end
 end

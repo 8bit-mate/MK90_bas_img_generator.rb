@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "run_length_encoding"
 
 require_relative "hex_mask_enhanced_script"
@@ -5,8 +7,10 @@ require_relative "hex_mask_enhanced_script"
 require_relative "./../../constants"
 require_relative "generator_hex_mask_general"
 require_relative "./../../BASIC_command_sets/basic_v10_command_set"
-
 require_relative "hex_img"
+require_relative "./../../script"
+
+require "delegate"
 
 #
 # To save space at the MPO-10 cart, it's possible to replace long sequences of repeating chunks with a shorter
@@ -24,7 +28,7 @@ require_relative "hex_img"
 # 3. if such instance is found: add prepending chunks to the BASIC code; then append a FOR-NEXT loop or DRAW/O;
 # 4. otherwise: add current chunk to the array of prepending chunks.
 #
-class GenHexMaskEnhanced
+class GenHexMaskEnhanced < SimpleDelegator
   #
   # BASIC script generation using DRAW/M feature with 'enhancements'.
   #
@@ -34,26 +38,24 @@ class GenHexMaskEnhanced
   #
   # @return [HexMaskEnhancedScript] hex_mask_script
   #
-  def generate(binary_image:, target_lang:, **kwargs)
-
+  def generate(binary_image:, **kwargs)
     hex_img = _hex_img_from_bin_pixels(binary_image)
 
-    x = 0
-    y = 0
-    if kwargs[:origin]
-      x = kwargs[:origin][:x]
-      y = kwargs[:origin][:y]
-    end
+    x = kwargs[:origin][:x]
+    y = kwargs[:origin][:y]
 
-    hex_mask_script = HexMaskEnhancedScript.new(
-      target_lang: target_lang,
+    hex_mask_script = HexMaskEnhancedScript.new(self)
+
+    hex_mask_script.init(
       hex_img: hex_img,
       rle_hex_img: _encode_hex_img(hex_img.img),
       x: x,
       y: y
     )
+
     hex_mask_script.compress
-    hex_mask_script
+
+    self
   end
 
   private

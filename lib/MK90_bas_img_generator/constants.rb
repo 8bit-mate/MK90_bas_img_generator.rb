@@ -9,4 +9,7 @@ module Constants
 
   DEF_WAIT_LOOP_CNT = 90
   DEF_WAIT_LOOP_TIME = 32_767
+
+  DEF_X_ORIG = 0
+  DEF_Y_ORIG = 0
 end

@@ -3,17 +3,19 @@
 require "bin_magick"
 
 #
-# Core methods to generate BASIC script using DRAW/M feature.
+# Encodes binary image to a hex-encoded image.
 #
 module HexMaskGenerator
   CHUNK_WIDTH = 8
 
   #
-  # Generate script.
+  # Encode binary image to a hex-encoded image.
   #
   # @param [BinMagick] binary_image
+  #   Image to encode.
   #
-  # @return [Array<Hash{ Symbol => Object }>] hex_img
+  # @return [Array<String>] hex_img
+  #   An encoded image, represented as a list of hex-chunks.
   #
   def self.generate_hex_mask(binary_image)
     hex_img = []
@@ -26,6 +28,8 @@ module HexMaskGenerator
         hex_img.push(bin_to_hex(chunk))
       end
     end
+
+    p hex_img
 
     hex_img
   end

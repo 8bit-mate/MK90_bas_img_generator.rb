@@ -1,6 +1,11 @@
-require_relative "./../../script"
+# frozen_string_literal: true
 
-class HexMaskEnhancedScript < Script
+require "delegate"
+
+#
+# Compresses hex-encoded image script to a more compact version (if possible).
+#
+class HexMaskEnhancedScript < SimpleDelegator
   attr_writer :hex_img, :rle_hex_img, :x, :y
   attr_reader :script
 
@@ -20,33 +25,34 @@ class HexMaskEnhancedScript < Script
   # @param [Integer] y
   #   Image origin point on the screen.
   #
-  def initialize(
+  def init(
     hex_img:,
     rle_hex_img:,
-    x: 0,
-    y: 0,
+    x:,
+    y:,
     **
   )
     @hex_img = hex_img
     @rle_hex_img = rle_hex_img
     @x = x
     @y = y
-
-    super
   end
 
+  #
+  # Compress hex-encoded image script to a more compact version (if possible).
+  #
   def compress
     @prepending_chunks = []
     @run_length_index = 0
 
-    @rle_hex_img.each_with_index do |rle_el, i|
+    @rle_hex_img.each_with_index do |rle_el, idx|
       @chunk_count = rle_el[:count]
       @chunk = rle_el[:chunk]
 
       _calc_current_pos
 
       if @chunk_count >= MIN_REP_WH_CHUNKS && @chunk == "00"
-        _process_white_segments(i)
+        _process_white_segments(idx)
         next
       elsif @chunk_count >= MIN_REP_CHUNKS && @chunk != "00"
         _process_non_white_segments
@@ -62,7 +68,9 @@ class HexMaskEnhancedScript < Script
 
   private
 
+  #
   # Calculate current (X, Y) position.
+  #
   def _calc_current_pos
     @y += @chunk_count
     return unless @y > @hex_img.height - 1
@@ -82,7 +90,9 @@ class HexMaskEnhancedScript < Script
     @prepending_chunks = []
   end
 
+  #
   # Replace long sequences of repeating chunks with a shorter FOR-NEXT loop.
+  #
   def _process_non_white_segments
     _add_prepending_chunks
     _clr_prepending_chunks
@@ -94,10 +104,13 @@ class HexMaskEnhancedScript < Script
     _upd_rle_index
   end
 
+  #
   # Replace long sequences of white chunks (0x00) with a shorter manual shift of the (X, Y) pointer.
+  #
+  # @param [Integer] idx
+  #
   def _process_white_segments(idx)
-    # if white segments are the last part of the image,
-    # we don't need to store them in the BASIC script at all
+    # If white segments are the last part of the image, we don't need to store them in the BASIC script at all.
     return if idx == @rle_hex_img.length - 1
 
     _add_prepending_chunks
@@ -116,7 +129,7 @@ class HexMaskEnhancedScript < Script
   end
 
   def _upd_prepending_chunks
-    # get chunks that are prepending at the current itteration:
+    # Get chunks that are prepending at the current itteration:
     current_chunks = @hex_img.img.slice(@run_length_index, @chunk_count)
 
     @prepending_chunks.concat current_chunks

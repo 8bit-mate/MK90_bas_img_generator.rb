@@ -11,9 +11,6 @@ gem "minitest", "~> 5.0"
 
 gem "rubocop", "~> 0.80"
 
-gem "rubocop", "~> 0.80"
-
 gem "run_length_encoding_rb", "~> 0.2.1"
 
 gem "bin_magick", "~> 0.1.3"
-

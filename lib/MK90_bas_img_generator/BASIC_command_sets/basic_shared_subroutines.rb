@@ -10,9 +10,9 @@ module BasicSharedSubroutines
   include Constants
 
   # MK90 BASIC loop to pause a program.
-  def append_wait_loop(loop_counter: DEF_WAIT_LOOP_CNT, time: DEF_WAIT_LOOP_TIME)
-    @script.append_for_loop(args: ["I", "=", "1", "TO", loop_counter.to_s], require_nl: true)
-    @script.append_wait(args: [time])
-    @script.append_next(args: ["I"])
+  def append_wait_loop(loop_counter: DEF_WAIT_LOOP_CNT, time: DEF_WAIT_LOOP_TIME, **kwargs)
+    append_for_loop(args: ["I", "=", "1", "TO", loop_counter.to_s], **kwargs)
+    append_wait(args: [time])
+    append_next(args: ["I"])
   end
 end

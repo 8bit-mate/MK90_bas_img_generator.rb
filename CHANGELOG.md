@@ -1,3 +1,8 @@
+### 0.1.3 / 2023-03-05
+
+* Added feature to append optional statements to the script.
+* Code was partially refactored.
+
 ### 0.1.2 / 2023-02-13
 
 * Added 'run_length_encoding_rb' dependency to the Gemfile.

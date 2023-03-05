@@ -24,7 +24,7 @@ Or install it yourself as:
 require "MK90_bas_img_generator"
 
 gen = MK90BasImgGenerator.new(
-  generator: generator.new,
+  generator: generator,
   binary_image: binary_image
   # put options here
 )

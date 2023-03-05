@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.name          = "MK90_bas_img_generator"
   spec.version       = MK90BasImgGenerator::VERSION
   spec.authors       = ["Mate"]
-  spec.email         = ["mate@example.com"]
+  #spec.email         = ["mate@example.com"]
 
   spec.summary       = "Generates MK90 BASIC script commands to show images on the MK90's screen."
   #spec.description   = "TODO: Write a longer description or delete this line."
