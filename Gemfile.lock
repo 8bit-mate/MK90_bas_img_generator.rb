@@ -1,15 +1,15 @@
 PATH
   remote: .
   specs:
-    MK90_bas_img_generator (0.1.0)
-      bin_magick (~> 0.1.2)
+    MK90_bas_img_generator (0.1.4)
+      bin_magick (~> 0.1.3)
       run_length_encoding_rb (~> 0.2.1)
 
 GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.2)
-    bin_magick (0.1.2)
+    bin_magick (0.1.3)
       rmagick (~> 4.2.4)
     minitest (5.16.3)
     parallel (1.22.1)
@@ -40,9 +40,11 @@ PLATFORMS
 
 DEPENDENCIES
   MK90_bas_img_generator!
+  bin_magick (~> 0.1.3)
   minitest (~> 5.0)
   rake (~> 13.0)
   rubocop (~> 0.80)
+  run_length_encoding_rb (~> 0.2.1)
 
 BUNDLED WITH
    2.2.3

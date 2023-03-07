@@ -29,8 +29,6 @@ module HexMaskGenerator
       end
     end
 
-    p hex_img
-
     hex_img
   end
 

@@ -1,3 +1,7 @@
+### 0.1.4 / 2023-03-07
+
+* Bug fix.
+
 ### 0.1.3 / 2023-03-05
 
 * Added feature to append optional statements to the script.
